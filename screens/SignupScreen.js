@@ -46,24 +46,25 @@ const styles = StyleSheet.create({
     container:{
       flex:1,
       alignItems:'center',
-      justifyContent: 'center',
+      marginTop: 40,
+      marginBottom: 50
     },
   
     image:{
-      width: 500,
-      height:350,
-      marginVertical:15
+      width: 400,
+      height:250,
+      marginVertical:10
     },
   
     textTitle:{
       fontFamily: 'open-sans',
-      fontSize: 45,
-      marginVertical:8,
+      fontSize: 40,
+      marginVertical:5,
     },
   
     textBody:{
       fontFamily: 'open-sans',
-      fontSize:18
+      fontSize:16
     }
 });
 
