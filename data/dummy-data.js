@@ -1,5 +1,5 @@
 import Category from '../models/Categori'
-import Favorite from '../models/Favorite';
+import Basket from '../models/Basket';
 import Specification from '../models/Specification';
 
 export const CATEGORIES = [
@@ -15,10 +15,10 @@ export const CATEGORIES = [
     new Category('10', 'Speaker Nirkabel dan Bluetooth', 'https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//91/MTA-7218027/jbl_speaker_wireless_bluetooth_jbl_go_2_full04_rtxk9n51.jpg')
   ];
 
-export const FAVORITE = [
-  new Favorite('1','6'),
-  new Favorite('2','7'),
-  new Favorite('3','10'),
+export const BASKET = [
+  new Basket('1','6'),
+  new Basket('2','7'),
+  new Basket('3','10'),
 ]
 
 export const SPECIFICATION =[

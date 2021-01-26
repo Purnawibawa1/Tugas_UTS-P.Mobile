@@ -5,10 +5,10 @@ import HeaderButton from "../components/HeaderButton"
 import {HeaderButtons, Item} from 'react-navigation-header-buttons' 
 import Color from '../constant/Color'
 import { DrawerActions } from '@react-navigation/native' 
-import {CATEGORIES, FAVORITE} from '../data/dummy-data'
+import {CATEGORIES, BASKET} from '../data/dummy-data'
 
 const ProfileScreen = (props) =>{
-    const favorite = FAVORITE.map((pl) =>
+    const basket = BASKET.map((pl) =>
         CATEGORIES.filter((cat) => cat.id === pl.id_categori)
     );
 
@@ -18,7 +18,7 @@ const ProfileScreen = (props) =>{
             <View style={{ alignSelf: "center" }}>
               <View style={styles.profileImage}>
                 <Image
-                  source={{ uri: "https://www.kindpng.com/picc/b/136/1369892.png" }}
+                  source={{ uri: "https://pbs.twimg.com/media/EaUbspwUMAAJdCE?format=jpg&name=4096x4096" }}
                   style={styles.image}
                   resizeMode="center"
                 ></Image>
@@ -69,7 +69,7 @@ const ProfileScreen = (props) =>{
     
             <View style={{ marginTop: 32 }}>
               <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                {favorite.map((fav) => (
+                {basket.map((fav) => (
                   <View style={styles.mediaImageContainer} key={fav[0].id}>
                     <Image
                       source={{ uri: fav[0].urlImage }}
@@ -146,12 +146,12 @@ const styles = StyleSheet.create({
 
     activityIndicator:{
         backgroundColor:'#CABFAB',
-        padding: 5,
-        height: 15,
-        width: 15,
-        borderRadius: 8,
-        marginTop:5,
-        marginRight:22,
+        padding: 4,
+        height: 12,
+        width: 12,
+        borderRadius: 6,
+        marginTop:3,
+        marginRight:20,
     },
 
     recent:{
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
     recentItem:{
         flexDirection:"row",
         alignItems:"flex-start",
-        marginBottom:18,
+        marginBottom:16,
     },
 
     container:{
