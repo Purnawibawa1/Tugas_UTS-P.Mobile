@@ -55,7 +55,7 @@ const FilterStack = createStackNavigator();
 const filterNavigations = () => {
   return (
     <FilterStack.Navigator>
-      <FilterStack.Screen name="FilterStack" component={FilterScreen} /*options={FilterScreenOption}*/ />
+      <FilterStack.Screen name="FilterStack" component={FilterScreen} options={FilterScreenOption} />
     </FilterStack.Navigator>
   );
 };
@@ -64,7 +64,7 @@ const StackBasket = createStackNavigator();
 const BasketNavigator = () => {
   return (
     <StackBasket.Navigator>
-      <StackBasket.Screen name="BasketScreen" component={BasketScreen} /*options={BasketScreenOption}*/ />
+      <StackBasket.Screen name="BasketScreen" component={BasketScreen} options={BasketScreenOption} />
       <StackBasket.Screen
         name="AudioDetailScreen"
         component={AudioDetailScreen}
