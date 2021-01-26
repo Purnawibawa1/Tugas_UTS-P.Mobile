@@ -7,7 +7,6 @@ import { Ionicons,Feather, FontAwesome } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {SafeAreaView, Button, View,Platform } from "react-native";
 
-
 import LoginScreen from '../screens/LoginScreen'
 import SignupScreen from '../screens/SignupScreen'
 import AudioCategoriScreen,{AudioScreenOptions} from '../screens/AudioCategoriScreen'

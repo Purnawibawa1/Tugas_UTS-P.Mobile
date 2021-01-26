@@ -49,25 +49,22 @@ const styles = StyleSheet.create({
   },
 
   image:{
-    width: 500,
-    height:350,
-    marginVertical:15
+    marginTop: 40,
+    width: 400,
+    height:250,
+    marginVertical:10
   },
 
   textTitle:{
     fontFamily: 'open-sans',
-    fontSize: 50,
-    marginVertical:15
+    fontSize: 40,
+    marginVertical:10
   },
 
   textBody:{
     fontFamily: 'open-sans',
-    fontSize:18
+    fontSize:16
   }
-
-
-
-
 })
 
 export default Login

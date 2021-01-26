@@ -212,8 +212,8 @@ const styles = StyleSheet.create({
     },
     
     text:{
-        fontFamily:"HelveticaNeue",
-        color:"#5257D"
+        /*fontFamily:"HelveticaNeue",*/
+        /*color:"#5257D"*/
     },
 
     statsContainer:{
@@ -229,7 +229,7 @@ const styles = StyleSheet.create({
 
     subText:{
         fontSize:12,
-        color:"AEB5BC",
+        color:"#AEB5BC",
         textTransform:"uppercase",
         fontWeight:"500"
     },
