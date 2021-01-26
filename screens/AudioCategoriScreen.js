@@ -10,7 +10,7 @@ import {DrawerActions} from '@react-navigation/native'
 import CategoriGridTile from "../components/CategoriGridTile"
 import {CATEGORIES} from "../data/dummy-data"
 
-const AudioCategoriScreen = (props) => {
+const AudioCategoriScreen = props => {
 
     const renderGridItem = (ItemData) => {
         return(

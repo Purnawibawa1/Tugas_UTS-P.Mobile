@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 
 import { createDrawerNavigator,DrawerItemList } from "@react-navigation/drawer";
-import { Ionicons,Feather, FontAwesome } from "@expo/vector-icons";
+import { Ionicons,Feather, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {SafeAreaView, Button, View,Platform } from "react-native";
 
@@ -11,8 +11,8 @@ import LoginScreen from '../screens/LoginScreen'
 import SignupScreen from '../screens/SignupScreen'
 import AudioCategoriScreen,{AudioScreenOptions} from '../screens/AudioCategoriScreen'
 import Color from "../constant/Color"
-// import FavoriteScreen, {FavoriteScreenOption} from '../screens/FavoriteScreen'
-// import FilterScreen, {FilterScreenOption} from '../screens/FilterScreen'
+import BasketScreen, {BasketScreenOption} from '../screens/BasketScreen'
+import FilterScreen, {FilterScreenOption} from '../screens/FilterScreen'
 import ProfileScreen, {ProfileScreenOption} from '../screens/ProfileScreen'
 import AudioDetailScreen, {AudioDetailScreenOption}  from '../screens/AudioDetailScreen'
 
@@ -23,7 +23,7 @@ const NavigationLogin = () => {
         <LoginStack.Navigator headerMode="none">
             <LoginStack.Screen name="LoginScreen" component={LoginScreen}/>
             <LoginStack.Screen name="SignupScreen" component={SignupScreen}/>
-            <LoginStack.Screen name="container" component={ProfileTabNavigator}/>
+            <LoginStack.Screen name="container" component={AudioTabNavigator}/>
         </LoginStack.Navigator>
     )
 }
@@ -51,32 +51,45 @@ const ProfileNavigation = () =>{
     )
 }
 
-// const FilterStack = createStackNavigator();
-// const filterNavigations = () => {
-//   return (
-//     <FilterStack.Navigator>
-//       <FilterStack.Screen name="FilterStack" component={FilterScreen} options={FilterScreenOption} />
-//     </FilterStack.Navigator>
-//   );
-// };
-
-const StackProfile = createStackNavigator();
-const ProfileNavigator = () => {
+const FilterStack = createStackNavigator();
+const filterNavigations = () => {
   return (
-    <StackProfile.Navigator>
-      <StackProfile.Screen name="ProfileScreen" component={ProfileScreen} options={ProfileScreenOption} />
-      <StackProfile.Screen
+    <FilterStack.Navigator>
+      <FilterStack.Screen name="FilterStack" component={FilterScreen} /*options={FilterScreenOption}*/ />
+    </FilterStack.Navigator>
+  );
+};
+
+const StackBasket = createStackNavigator();
+const BasketNavigator = () => {
+  return (
+    <StackBasket.Navigator>
+      <StackBasket.Screen name="BasketScreen" component={BasketScreen} /*options={BasketScreenOption}*/ />
+      <StackBasket.Screen
         name="AudioDetailScreen"
         component={AudioDetailScreen}
       />
-    </StackProfile.Navigator>
+    </StackBasket.Navigator>
   );
 };
+
+// const StackProfile = createStackNavigator();
+// const ProfileNavigator = () => {
+//   return (
+//     <StackProfile.Navigator>
+//       <StackProfile.Screen name="ProfileScreen" component={ProfileScreen} options={ProfileScreenOption} />
+//       <StackProfile.Screen
+//         name="AudioDetailScreen"
+//         component={AudioDetailScreen}
+//       />
+//     </StackProfile.Navigator>
+//   );
+// };
 //end stack
 
 
 const Tab = createBottomTabNavigator();
-const ProfileTabNavigator = () => {
+const AudioTabNavigator = () => {
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -102,12 +115,12 @@ const ProfileTabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name=" Profile"
-        component={ProfileNavigator}
+        name="My Basket"
+        component={BasketNavigator}
         options={{
           tabBarIcon: (tabInfo) => {
             return (
-              <FontAwesome name="user" size={25} color={Color.primaryColor} />
+              <FontAwesome name="shopping-cart" size={25} color={Color.primaryColor} />
             );
           },
         }}
@@ -148,15 +161,11 @@ const MainNavigator = () => {
           ),
         }}/>
         
-        {/* <Drawer.Screen name="Filter" component={filterNavigations} options={{
+        <Drawer.Screen name="Filter" component={filterNavigations} options={{
           drawerIcon: (props) => (
-            <Ionicons
-              name={Platform.OS === "android" ? "md-color-filter" : "ios-color-filter"}
-              size={23}
-              color={props.color}
-            />
+            <MaterialIcons name="filter-list" size={23} color={props.color} />
           ),
-        }}/> */}
+        }}/>
         <Drawer.Screen name="Profile" component={ProfileNavigation}  options={{
           drawerIcon: (props) => (
             <Feather name="user-check" size={23}  color={props.color} />
