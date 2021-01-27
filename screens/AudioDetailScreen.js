@@ -1,4 +1,4 @@
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, useCallback} from 'react'
 import {View,Text, Platform, ScrollView, Image, StyleSheet} from 'react-native'
 import HeaderButton from "../components/HeaderButton"
 import {HeaderButtons, Item} from 'react-navigation-header-buttons' 
@@ -6,6 +6,7 @@ import Color from '../constant/Color'
 import { DrawerActions } from '@react-navigation/native' 
 import { CATEGORIES, SPECIFICATION } from '../data/dummy-data'
 import DefaultText from '../components/DefaultText'
+import { Ionicons,Feather, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 
 
 const ListItem = (props) =>{
@@ -22,9 +23,27 @@ const AudioDetailScreen = (props) =>{
     const specification = SPECIFICATION.filter((spec) => spec.categoriId === category.id)
     const merge = [...specification,category]
     const [urlImage,setUrlImage] = useState("")
-    
+    const [isBasket, setIsBasket] = useState(false)
+
+    const toogleBasketHandle = useCallback(() =>{
+      setIsBasket((prevState) => !prevState)
+    }, [isBasket])
+
     useEffect(()=>{
         if(merge[1]){
+            props.navigation.setOptions({
+              headerRight: () => {
+                return(
+                  <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                      <Item
+                        title="Basket"
+                        iconName={isBasket ? "ios-checkmark-circle" : "ios-checkmark-circle-outline"}
+                        onPress={toogleBasketHandle}
+                      />
+                  </HeaderButtons>
+                )
+              }
+            })
             setUrlImage(merge[1].urlImage)
         }
     })
@@ -46,10 +65,10 @@ const AudioDetailScreen = (props) =>{
           )}
     
           <View>
-            {/* <View style={styles.details}>
+            <View style={styles.details}>
               <DefaultText>{merge[0].duration}m</DefaultText>
               <DefaultText>{merge[0].complexity.toUpperCase()}</DefaultText>
-            </View> */}
+            </View>
             <Text style={styles.title}>Specification Audio</Text>
             {merge[0].ingredients.map((ingredients) => (
               <ListItem key={ingredients}>{ingredients}</ListItem>
@@ -77,9 +96,10 @@ const styles = StyleSheet.create({
     },
 
     title:{
-      fontFamily:"open-sans",
+      fontFamily:"open-sans-bold",
       fontSize:22,
       textAlign:"center", 
+      fontWeight: "bold",
     },
 
     listItem:{
