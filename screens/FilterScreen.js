@@ -5,7 +5,8 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons'
 import HeaderButton from '../components/HeaderButton'
 import Color from '../constant/Color'
 import { CATEGORIES } from '../data/dummy-data'
-
+import {useDispatch} from 'react-redux'
+import * as CategoriAction from "../store/actions/categori"
 
 const FilterSwitch = props => {
     return(
@@ -22,6 +23,7 @@ const FilterSwitch = props => {
 }
 
 const FilterScreen = (props) =>{
+    const dispatch = useDispatch()
     const [isGlutenFree, setIsisGlutenFree] = useState(null)
     const cat = CATEGORIES
     const filterCategori = (id) =>{
@@ -37,6 +39,7 @@ const FilterScreen = (props) =>{
         const appliedFilters = {
             filter: isGlutenFree
         }
+       dispatch(CategoriAction.filterCategori(appliedFilters)) 
     }, [isGlutenFree])
 
    useEffect(() =>{

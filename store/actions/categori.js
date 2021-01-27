@@ -1,6 +1,6 @@
 import {CATEGORIES} from "../../data/dummy-data"
 export const SHOW_CATEGORI = "SHOW_CATEGORI"
-
+export const FILTER = "FILTER"
 
 const loadCategori = () =>{
      return new Promise((resolve) =>{
@@ -16,6 +16,15 @@ export const fetchCategori = () =>{
             type:SHOW_CATEGORI,
             data:categori
 
+        })
+    }
+}
+
+export const filterCategori = (categori) => {
+    return async(dispatch) => {
+        dispatch({
+            type:FILTER,
+            id:categori.filter
         })
     }
 }
