@@ -9,14 +9,15 @@ import {enableScreens} from 'react-native-screens'
 import Navigation from './navigations/AudioNavigation'
 
 import CategoriReducer from './store/reducer/categori'
+import specificationReducer from './store/reducer/detail' 
 //redux
 import {createStore, combineReducers, applyMiddleware} from 'redux'
 import {Provider} from 'react-redux'
 import ReduxThunk from 'redux-thunk'
 
-
 const rootReducer = combineReducers({
-    categori:CategoriReducer
+    categori:CategoriReducer,
+    specification:specificationReducer
 })
 
 const store = createStore(rootReducer,applyMiddleware(ReduxThunk))

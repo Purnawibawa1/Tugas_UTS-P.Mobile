@@ -7,7 +7,8 @@ import { DrawerActions } from '@react-navigation/native'
 import { CATEGORIES, SPECIFICATION } from '../data/dummy-data'
 import DefaultText from '../components/DefaultText'
 import { Ionicons,Feather, FontAwesome, MaterialIcons } from "@expo/vector-icons";
-
+import {useSelector, useDispatch} from 'react-redux'
+import { State } from 'react-native-gesture-handler'
 
 const ListItem = (props) =>{
     return(
@@ -19,8 +20,14 @@ const ListItem = (props) =>{
 
 const AudioDetailScreen = (props) =>{
     const catid = props.route.params?.categoriId ?? null
-    const category = CATEGORIES.find((cat) => cat.id === catid)
-    const specification = SPECIFICATION.filter((spec) => spec.categoriId === category.id)
+    const category = useSelector(state => state.categori.categori.find(cat => cat.id === catid))   
+  
+    // CATEGORIES.find((cat) => cat.id === catid)
+
+    const specification =    useSelector(state => state.specification.specification.filter(spec =>spec.categoriId === category.id))
+  
+    /*SPECIFICATION.filter((spec) => spec.categoriId === category.id)*/
+
     const merge = [...specification,category]
     const [urlImage,setUrlImage] = useState("")
     const [isBasket, setIsBasket] = useState(false)
