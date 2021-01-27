@@ -8,6 +8,20 @@ import {AppLoading} from 'expo'
 import {enableScreens} from 'react-native-screens'
 import Navigation from './navigations/AudioNavigation'
 
+import CategoriReducer from './store/reducer/categori'
+//redux
+import {createStore, combineReducers, applyMiddleware} from 'redux'
+import {Provider} from 'react-redux'
+import ReduxThunk from 'redux-thunk'
+
+
+const rootReducer = combineReducers({
+    categori:CategoriReducer
+})
+
+const store = createStore(rootReducer,applyMiddleware(ReduxThunk))
+
+
 enableScreens()
 
 const fetchFonts = () => {
@@ -31,5 +45,9 @@ export default function App() {
     )
   }
 
-  return <Navigation/>
+  return(
+    <Provider store={store}>
+    <Navigation/>
+    </Provider>  
+  ) 
 }
