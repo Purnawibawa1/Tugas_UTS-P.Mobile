@@ -1,3 +1,5 @@
+import { SHOW_CATEGORI } from "../actions/categori"
+
 const initialState = {
     categori:[]
 }
@@ -5,8 +7,10 @@ const initialState = {
 
 const CategoriReducer = (state = initialState,action) =>{
     switch (action.type) {
-        case "TES":
-            return state
+        case SHOW_CATEGORI:
+            return {
+                ...state,categori:action.data
+            }
         default:
             return state
     }

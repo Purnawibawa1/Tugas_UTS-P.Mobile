@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useCallback, useEffect} from 'react'
 import {View,Text,Platform, FlatList} from 'react-native'
 import HeaderButton from "../components/HeaderButton"
 import {
@@ -9,8 +9,22 @@ import Color from "../constant/Color";
 import {DrawerActions} from '@react-navigation/native'
 import CategoriGridTile from "../components/CategoriGridTile"
 import {CATEGORIES} from "../data/dummy-data"
+import {useDispatch,useSelector} from 'react-redux'
+import * as CategoriAction from '../store/actions/categori'
 
 const AudioCategoriScreen = props => {
+
+    const dispatch = useDispatch()
+
+    const categori = useSelector((state) => state.categori.categori)
+
+    const loadCategori = useCallback(async() => {
+        dispatch(CategoriAction.fetchCategori())
+    },[dispatch])
+
+    useEffect(() =>{
+        loadCategori()
+    },[loadCategori])
 
     const renderGridItem = (ItemData) => {
         return(
@@ -29,7 +43,7 @@ const AudioCategoriScreen = props => {
     return(
        <FlatList
        numColumns={2}
-       data={CATEGORIES}
+       data={!categori ? CATEGORIES : categori}
        renderItem={renderGridItem}
        keyExtractor={(item,index) => item.id}
        />
